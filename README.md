@@ -1,269 +1,269 @@
-# TodoAly - Todo List Application
+# TodoAly - Application de Liste de Tâches
 
-TodoAly is a full-stack todo list application built with React (frontend) and Node.js/TypeScript (backend) with MySQL database using Prisma ORM. The application allows users to create, manage, and track their tasks with features like user authentication, task permissions, voice messages, and image uploads.
+TodoAly est une application de liste de tâches full-stack construite avec React (frontend) et Node.js/TypeScript (backend) avec une base de données MySQL utilisant Prisma ORM. L'application permet aux utilisateurs de créer, gérer et suivre leurs tâches avec des fonctionnalités comme l'authentification utilisateur, les permissions de tâches, les messages vocaux et les téléchargements d'images.
 
-## Features
+## Fonctionnalités
 
-- **User Authentication**: Login and registration system with JWT tokens
-- **Task Management**: Create, read, update, and delete tasks
-- **Task Status**: Track tasks with statuses (A_FAIRE, EN_COURS, TERMINEE)
-- **User Roles**: Support for different user roles (ADMIN, ETUDIANT, PROFESSEUR)
-- **Task Permissions**: Grant permissions to other users to edit specific tasks
-- **Voice Messages**: Record and attach voice messages to tasks
-- **Image Uploads**: Attach images to tasks
-- **Automated Tasks**: Automatic task completion based on time settings
-- **Notifications**: Notification system for task updates
-- **Responsive Design**: Modern UI built with React and Tailwind CSS
+- **Authentification Utilisateur** : Système de connexion et d'inscription avec tokens JWT
+- **Gestion des Tâches** : Créer, lire, mettre à jour et supprimer des tâches
+- **Statut des Tâches** : Suivre les tâches avec des statuts (A_FAIRE, EN_COURS, TERMINEE)
+- **Rôles Utilisateur** : Support pour différents rôles utilisateur (ADMIN, ETUDIANT, PROFESSEUR)
+- **Permissions des Tâches** : Accorder des permissions à d'autres utilisateurs pour modifier des tâches spécifiques
+- **Messages Vocaux** : Enregistrer et attacher des messages vocaux aux tâches
+- **Téléchargements d'Images** : Attacher des images aux tâches
+- **Tâches Automatisées** : Achèvement automatique des tâches basé sur les paramètres de temps
+- **Notifications** : Système de notifications pour les mises à jour de tâches
+- **Design Responsive** : Interface utilisateur moderne construite avec React et Tailwind CSS
 
-## Prerequisites
+## Prérequis
 
-Before running this application, make sure you have the following installed:
+Avant d'exécuter cette application, assurez-vous d'avoir installé les éléments suivants :
 
-- **Node.js** (version 16 or higher)
-- **npm** (comes with Node.js)
-- **MySQL** (version 8.0 or higher)
-- **Git** (for cloning the repository)
+- **Node.js** (version 16 ou supérieure)
+- **npm** (fourni avec Node.js)
+- **MySQL** (version 8.0 ou supérieure)
+- **Git** (pour cloner le dépôt)
 
 ## Installation
 
-### 1. Clone the Repository
+### 1. Cloner le Dépôt
 
 ```bash
-git clone <repository-url>
+git clone <url-du-depot>
 cd TodoAly
 ```
 
-### 2. Backend Setup
+### 2. Configuration du Backend
 
-Navigate to the backend directory:
+Naviguez vers le répertoire backend :
 
 ```bash
 cd projetAly/Live2
 ```
 
-Install dependencies:
+Installez les dépendances :
 
 ```bash
 npm install
 ```
 
-### 3. Database Setup
+### 3. Configuration de la Base de Données
 
-Make sure MySQL is running on your system. Create a database for the application.
+Assurez-vous que MySQL fonctionne sur votre système. Créez une base de données pour l'application.
 
-Update the `.env` file in the `projetAly/Live2` directory with your database credentials:
+Mettez à jour le fichier `.env` dans le répertoire `projetAly/Live2` avec vos identifiants de base de données :
 
 ```env
-DATABASE_URL="mysql://username:password@localhost:3306/your_database_name"
+DATABASE_URL="mysql://nom_utilisateur:mot_de_passe@localhost:3306/nom_de_votre_base"
 PORT=3000
-TOKEN=your_secret_token_here
+TOKEN=votre_token_secret_ici
 ```
 
-Run database migrations:
+Exécutez les migrations de base de données :
 
 ```bash
 npm run migrate
 ```
 
-Generate Prisma client:
+Générez le client Prisma :
 
 ```bash
 npm run generate
 ```
 
-### 4. Frontend Setup
+### 4. Configuration du Frontend
 
-Navigate to the frontend directory:
+Naviguez vers le répertoire frontend :
 
 ```bash
 cd ../todolist
 ```
 
-Install dependencies:
+Installez les dépendances :
 
 ```bash
 npm install
 ```
 
-## Running the Application
+## Exécution de l'Application
 
-### Start the Backend
+### Démarrer le Backend
 
-From the `projetAly/Live2` directory:
-
-```bash
-npm run dev
-```
-
-The backend will start on `http://localhost:3000`
-
-### Start the Frontend
-
-From the `projetAly/todolist` directory:
+Depuis le répertoire `projetAly/Live2` :
 
 ```bash
 npm run dev
 ```
 
-The frontend will start on `http://localhost:5173` (default Vite port)
+Le backend démarrera sur `http://localhost:3000`
 
-## Usage
+### Démarrer le Frontend
 
-### First Time Setup
+Depuis le répertoire `projetAly/todolist` :
 
-1. **Register a new account**: Visit the frontend application and click on registration
-2. **Login**: Use your credentials to log in
-3. **Create tasks**: Start adding your todo items
+```bash
+npm run dev
+```
 
-### Using the Application
+Le frontend démarrera sur `http://localhost:5173` (port par défaut de Vite)
 
-#### Task Management
-- **Add Task**: Click the "Add Task" button and fill in the title and description
-- **Edit Task**: Click the edit button on any task to modify it
-- **Delete Task**: Click the delete button to remove a task
-- **Change Status**: Use the status dropdown to change task status
-- **Mark Complete**: Click the checkbox to toggle task completion
+## Utilisation
 
-#### Advanced Features
-- **Voice Messages**: Click the microphone icon to record voice messages
-- **Image Upload**: Click the image icon to attach images to tasks
-- **Permissions**: Grant other users permission to edit your tasks
-- **Automated Tasks**: Set tasks to auto-complete at specific times
+### Configuration Initiale
 
-#### User Management
-- **User Roles**: Different roles have different permissions
-- **Profile Management**: Update your user information
+1. **Créer un nouveau compte** : Visitez l'application frontend et cliquez sur l'inscription
+2. **Se connecter** : Utilisez vos identifiants pour vous connecter
+3. **Créer des tâches** : Commencez à ajouter vos éléments de tâches
 
-## API Endpoints
+### Utilisation de l'Application
 
-### Authentication
-- `POST /auth/login` - User login
-- `POST /auth/register` - User registration
+#### Gestion des Tâches
+- **Ajouter une Tâche** : Cliquez sur le bouton "Ajouter une Tâche" et remplissez le titre et la description
+- **Modifier une Tâche** : Cliquez sur le bouton d'édition d'une tâche pour la modifier
+- **Supprimer une Tâche** : Cliquez sur le bouton de suppression pour supprimer une tâche
+- **Changer le Statut** : Utilisez le menu déroulant de statut pour changer le statut de la tâche
+- **Marquer comme Terminée** : Cliquez sur la case à cocher pour basculer l'achèvement de la tâche
 
-### Tasks
-- `GET /taches` - Get all tasks for authenticated user
-- `POST /taches` - Create a new task
-- `PUT /taches/:id` - Update a task
-- `DELETE /taches/:id` - Delete a task
+#### Fonctionnalités Avancées
+- **Messages Vocaux** : Cliquez sur l'icône du microphone pour enregistrer des messages vocaux
+- **Téléchargement d'Images** : Cliquez sur l'icône d'image pour attacher des images aux tâches
+- **Permissions** : Accordez à d'autres utilisateurs la permission de modifier vos tâches
+- **Tâches Automatisées** : Configurez les tâches pour qu'elles s'achèvent automatiquement à des heures spécifiques
 
-### Users
-- `GET /users` - Get all users
-- `POST /users` - Create a new user
-- `PUT /users/:id` - Update a user
-- `DELETE /users/:id` - Delete a user
+#### Gestion des Utilisateurs
+- **Rôles Utilisateur** : Différents rôles ont différentes permissions
+- **Gestion du Profil** : Mettez à jour vos informations utilisateur
+
+## Points de Terminaison API
+
+### Authentification
+- `POST /auth/login` - Connexion utilisateur
+- `POST /auth/register` - Inscription utilisateur
+
+### Tâches
+- `GET /taches` - Obtenir toutes les tâches pour l'utilisateur authentifié
+- `POST /taches` - Créer une nouvelle tâche
+- `PUT /taches/:id` - Mettre à jour une tâche
+- `DELETE /taches/:id` - Supprimer une tâche
+
+### Utilisateurs
+- `GET /users` - Obtenir tous les utilisateurs
+- `POST /users` - Créer un nouvel utilisateur
+- `PUT /users/:id` - Mettre à jour un utilisateur
+- `DELETE /users/:id` - Supprimer un utilisateur
 
 ### Permissions
-- `GET /permissions` - Get permissions
-- `POST /permissions` - Grant permissions
-- `DELETE /permissions/:id` - Revoke permissions
+- `GET /permissions` - Obtenir les permissions
+- `POST /permissions` - Accorder des permissions
+- `DELETE /permissions/:id` - Révoquer des permissions
 
 ### Notifications
-- `GET /notifications` - Get user notifications
-- `POST /notifications` - Create notification
+- `GET /notifications` - Obtenir les notifications utilisateur
+- `POST /notifications` - Créer une notification
 
-## Project Structure
+## Structure du Projet
 
 ```
 TodoAly/
 ├── projetAly/
 │   ├── Live2/                 # Backend (Node.js + TypeScript)
 │   │   ├── src/
-│   │   │   ├── controller/    # Route controllers
-│   │   │   ├── middleware/    # Authentication middleware
-│   │   │   ├── repository/    # Data access layer
-│   │   │   ├── route/         # API routes
-│   │   │   ├── service/       # Business logic
-│   │   │   ├── Validation/    # Input validation
-│   │   │   └── index.ts       # Application entry point
-│   │   ├── prisma/            # Database schema and migrations
-│   │   ├── uploads/           # File uploads directory
-│   │   └── .env               # Environment variables
+│   │   │   ├── controller/    # Contrôleurs de routes
+│   │   │   ├── middleware/    # Middleware d'authentification
+│   │   │   ├── repository/    # Couche d'accès aux données
+│   │   │   ├── route/         # Routes API
+│   │   │   ├── service/       # Logique métier
+│   │   │   ├── Validation/    # Validation des entrées
+│   │   │   └── index.ts       # Point d'entrée de l'application
+│   │   ├── prisma/            # Schéma de base de données et migrations
+│   │   ├── uploads/           # Répertoire de téléchargements de fichiers
+│   │   └── .env               # Variables d'environnement
 │   └── todolist/              # Frontend (React + Vite)
 │       ├── src/
-│       │   ├── composant/     # React components
-│       │   ├── hooks/         # Custom React hooks
-│       │   ├── validation/    # Form validation
-│       │   └── assets/        # Static assets
-│       ├── public/            # Public assets
-│       └── db.json            # Mock data (for development)
-└── README.md                  # This file
+│       │   ├── composant/     # Composants React
+│       │   ├── hooks/         # Hooks React personnalisés
+│       │   ├── validation/    # Validation de formulaires
+│       │   └── assets/        # Ressources statiques
+│       ├── public/            # Ressources publiques
+│       └── db.json            # Données fictives (pour le développement)
+└── README.md                  # Ce fichier
 ```
 
-## Technologies Used
+## Technologies Utilisées
 
 ### Backend
-- **Node.js** - JavaScript runtime
-- **TypeScript** - Typed JavaScript
-- **Express.js** - Web framework
-- **Prisma** - ORM for database management
-- **MySQL** - Relational database
-- **JWT** - JSON Web Tokens for authentication
-- **Multer** - File upload handling
-- **Zod** - Schema validation
-- **CORS** - Cross-origin resource sharing
+- **Node.js** - Environnement d'exécution JavaScript
+- **TypeScript** - JavaScript typé
+- **Express.js** - Framework web
+- **Prisma** - ORM pour la gestion de base de données
+- **MySQL** - Base de données relationnelle
+- **JWT** - JSON Web Tokens pour l'authentification
+- **Multer** - Gestion des téléchargements de fichiers
+- **Zod** - Validation de schéma
+- **CORS** - Partage de ressources cross-origin
 
 ### Frontend
-- **React** - UI library
-- **Vite** - Build tool and development server
-- **React Router** - Client-side routing
-- **Tailwind CSS** - Utility-first CSS framework
-- **Lucide React** - Icon library
-- **JWT Decode** - JWT token decoding
+- **React** - Bibliothèque d'interface utilisateur
+- **Vite** - Outil de construction et serveur de développement
+- **React Router** - Routage côté client
+- **Tailwind CSS** - Framework CSS utilitaire
+- **Lucide React** - Bibliothèque d'icônes
+- **JWT Decode** - Décodage de tokens JWT
 
-## Development
+## Développement
 
-### Backend Development Scripts
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run migrate` - Run database migrations
-- `npm run generate` - Generate Prisma client
+### Scripts de Développement Backend
+- `npm run dev` - Démarrer le serveur de développement avec rechargement à chaud
+- `npm run build` - Construire pour la production
+- `npm run start` - Démarrer le serveur de production
+- `npm run migrate` - Exécuter les migrations de base de données
+- `npm run generate` - Générer le client Prisma
 
-### Frontend Development Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run server:api` - Start JSON server (for development)
+### Scripts de Développement Frontend
+- `npm run dev` - Démarrer le serveur de développement
+- `npm run build` - Construire pour la production
+- `npm run preview` - Aperçu de la construction de production
+- `npm run lint` - Exécuter ESLint
+- `npm run server:api` - Démarrer le serveur JSON (pour le développement)
 
-## Troubleshooting
+## Dépannage
 
-### Common Issues
+### Problèmes Courants
 
-1. **Database Connection Error**
-   - Ensure MySQL is running
-   - Check DATABASE_URL in .env file
-   - Verify database credentials
+1. **Erreur de Connexion à la Base de Données**
+   - Assurez-vous que MySQL fonctionne
+   - Vérifiez DATABASE_URL dans le fichier .env
+   - Vérifiez les identifiants de base de données
 
-2. **Port Already in Use**
-   - Change PORT in .env file
-   - Kill process using the port: `lsof -ti:3000 | xargs kill -9`
+2. **Port Déjà Utilisé**
+   - Changez PORT dans le fichier .env
+   - Tuez le processus utilisant le port : `lsof -ti:3000 | xargs kill -9`
 
-3. **CORS Errors**
-   - Backend is configured to allow all origins in development
-   - Check if backend is running on correct port
+3. **Erreurs CORS**
+   - Le backend est configuré pour permettre toutes les origines en développement
+   - Vérifiez si le backend fonctionne sur le bon port
 
-4. **Authentication Issues**
-   - Clear localStorage in browser
-   - Check TOKEN in .env file
-   - Verify JWT token expiration
+4. **Problèmes d'Authentification**
+   - Effacez le localStorage dans le navigateur
+   - Vérifiez TOKEN dans le fichier .env
+   - Vérifiez l'expiration du token JWT
 
-### File Upload Issues
-- Ensure `uploads/` directory exists and is writable
-- Check file size limits in multer configuration
+### Problèmes de Téléchargement de Fichiers
+- Assurez-vous que le répertoire `uploads/` existe et est accessible en écriture
+- Vérifiez les limites de taille de fichier dans la configuration multer
 
-## Contributing
+## Contribution
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests
-5. Submit a pull request
+1. Forkez le dépôt
+2. Créez une branche de fonctionnalité
+3. Faites vos modifications
+4. Exécutez les tests
+5. Soumettez une pull request
 
-## License
+## Licence
 
-This project is licensed under the ISC License.
+Ce projet est sous licence ISC.
 
 ## Support
 
-For support or questions, please contact the development team.
+Pour le support ou les questions, veuillez contacter l'équipe de développement.
