@@ -115,6 +115,37 @@ Le frontend démarrera sur `http://localhost:5173` (port par défaut de Vite)
 2. **Se connecter** : Utilisez vos identifiants pour vous connecter
 3. **Créer des tâches** : Commencez à ajouter vos éléments de tâches
 
+### Données de Test et Accès Admin
+
+Pour tester l'application avec des données existantes, vous pouvez utiliser les seeders :
+
+#### Utilisation des Seeders (Recommandé)
+1. **Après avoir configuré la base de données**, exécutez les seeders :
+   ```bash
+   cd projetAly/Live2
+   npm run seed
+   ```
+
+2. **Comptes de test créés automatiquement** :
+   - **Admin** : `admin@todoaly.com` / `password123`
+   - **Professeur** : `professeur@todoaly.com` / `password123`
+   - **Étudiant 1** : `etudiant1@todoaly.com` / `password123`
+   - **Étudiant 2** : `etudiant2@todoaly.com` / `password123`
+
+3. **Données de test incluses** :
+   - 4 utilisateurs avec différents rôles
+   - 5 tâches avec différents statuts
+   - Permissions entre utilisateurs
+   - Tâches avec dates, descriptions et statuts variés
+
+#### Option Alternative : Créer un Compte Administrateur Manuellement
+1. **Inscrivez-vous** avec un nouveau compte
+2. **Modifiez manuellement le rôle** dans la base de données MySQL :
+   ```sql
+   UPDATE Users SET statut = 'ADMIN' WHERE email = 'votre_email@example.com';
+   ```
+3. **Reconnectez-vous** pour avoir accès aux fonctionnalités admin
+
 ### Utilisation de l'Application
 
 #### Gestion des Tâches
@@ -176,7 +207,11 @@ TodoAly/
 │   │   │   ├── Validation/    # Validation des entrées
 │   │   │   └── index.ts       # Point d'entrée de l'application
 │   │   ├── prisma/            # Schéma de base de données et migrations
+│   │   │   ├── schema.prisma  # Schéma Prisma
+│   │   │   ├── seed.ts        # Données de test (seeders)
+│   │   │   └── migrations/    # Migrations de base de données
 │   │   ├── uploads/           # Répertoire de téléchargements de fichiers
+│   │   ├── update_images.sql  # Script SQL pour corriger les extensions d'images
 │   │   └── .env               # Variables d'environnement
 │   └── todolist/              # Frontend (React + Vite)
 │       ├── src/
@@ -218,6 +253,7 @@ TodoAly/
 - `npm run start` - Démarrer le serveur de production
 - `npm run migrate` - Exécuter les migrations de base de données
 - `npm run generate` - Générer le client Prisma
+- `npm run seed` - Exécuter les seeders pour ajouter des données de test
 
 ### Scripts de Développement Frontend
 - `npm run dev` - Démarrer le serveur de développement
@@ -251,6 +287,28 @@ TodoAly/
 ### Problèmes de Téléchargement de Fichiers
 - Assurez-vous que le répertoire `uploads/` existe et est accessible en écriture
 - Vérifiez les limites de taille de fichier dans la configuration multer
+
+### Accès Direct à la Base de Données
+Si vous voulez inspecter ou modifier directement les données :
+1. **Connectez-vous à MySQL** :
+   ```bash
+   mysql -u votre_utilisateur -p votre_base_de_donnees
+   ```
+2. **Tables principales** :
+   - `Users` : Utilisateurs de l'application
+   - `Taches` : Tâches créées
+   - `Permission` : Permissions entre utilisateurs
+3. **Exemples de requêtes** :
+   ```sql
+   -- Voir tous les utilisateurs
+   SELECT * FROM Users;
+
+   -- Voir toutes les tâches
+   SELECT * FROM Taches;
+
+   -- Changer un utilisateur en admin
+   UPDATE Users SET statut = 'ADMIN' WHERE id = 1;
+   ```
 
 ## Contribution
 
