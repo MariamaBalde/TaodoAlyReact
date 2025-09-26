@@ -138,14 +138,6 @@ Pour tester l'application avec des données existantes, vous pouvez utiliser les
    - Permissions entre utilisateurs
    - Tâches avec dates, descriptions et statuts variés
 
-#### Option Alternative : Créer un Compte Administrateur Manuellement
-1. **Inscrivez-vous** avec un nouveau compte
-2. **Modifiez manuellement le rôle** dans la base de données MySQL :
-   ```sql
-   UPDATE Users SET statut = 'ADMIN' WHERE email = 'votre_email@example.com';
-   ```
-3. **Reconnectez-vous** pour avoir accès aux fonctionnalités admin
-
 ### Utilisation de l'Application
 
 #### Gestion des Tâches
